@@ -1,0 +1,29 @@
+$unit: 4px;
+
+.podcasts {
+    list-style: none;
+    li {
+        padding-left: 0;
+        margin-bottom: $unit;
+    }
+    time {
+        font-style: italic;
+        color: #555;
+        &::before {
+            content: ' (';
+        }
+        &::after {
+            content: 'mins)';
+        }
+    }
+}
+
+.info {
+    position: absolute;
+    top: 60px;
+    right: 0px;
+    text-align: right;
+    background: #ccc;
+    padding: $unit ($unit * 2);
+    box-shadow: 0px 4px 4px rgba(0,0,0,0.5);
+}
