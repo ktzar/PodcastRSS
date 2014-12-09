@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block main %}
+    <h1>PodcastRSS</h1>
+    <p>Listen to your podcasts.</p>
+    <div class="info"></div>
+    <ul class="podcasts">
+    {% for podcast in podcasts %}
+    <li data-mp3="{{ podcast.url }}">
+        <button>Listen <span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
+        <span>{{ podcast.title }} ({{podcast.length}} minutes)</span>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
