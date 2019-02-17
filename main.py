@@ -1,16 +1,15 @@
 from flask import Flask
 from flask import render_template
 from flask import url_for
-import urllib2
+import requests
 import xmltodict
 import redis
 
 app = Flask(__name__)
 
 def get_podcasts():
-    file = urllib2.urlopen('http://www.cadenaser.com/rssaudio/hoy-por-hoy.xml')
-    data = file.read()
-    file.close()
+    file = requests.get('http://www.cadenaser.com/rssaudio/hoy-por-hoy.xml')
+    data = file.text
     data = xmltodict.parse(data)
     items = data['rss']['channel']['item']
     podcasts = []
@@ -27,4 +26,4 @@ def home():
 
 if __name__ == "__main__":
     app.debug = True
-    app.run()
+    app.run(host='0.0.0.0')
